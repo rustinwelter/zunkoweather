@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="ふるさと女学院天気部" />
+    <meta
+      name="description"
+      content="ふるさと女学院天気部では気象だけではなく、天文現象も研究しています。部員は随時募集しています。興味がありましたら、ぜひ一度見学に来てください。"
+    />
+    <meta name="robots" content="noarchive, nofollow, nosnippet" />
+    <title>ふるさと女学院天気部</title>
+    <link
+      rel="icon"
+      href="assets/images/icons/zzm_zunda.png"
+      type="image/png"
+    />
+    <link rel="apple-touch-icon" href="assets/images/icons/zzm_zunda.png" />
+    <link
+      rel="preload"
+      href="assets/fonts/ZenOldMincho-Regular.woff2"
+      as="font"
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/ZenOldMincho-Black.woff2"
+      as="font"
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/background/background_main.webp"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/background/background_mobile.webp"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <input type="checkbox" id="menu" />
+    <label for="menu" class="back"></label>
+    <label for="menu" class="close">✕</label>
+    <label for="menu" class="open"
+      ><img src="assets/images/icons/zzm_zunda.png" alt="≡" title="メニュー"
+    /></label>
+    <aside>
+      <nav>
+        <div id="notice">
+          <h3>ご利用の前に</h3>
+          <noscript>
+            <p id="noscript">
+              ご利用になるには JavaScript を有効にしてください。
+            </p>
+          </noscript>
+          <ol>
+            <li>
+              短時間に連続で選択・再読み込みをすることは情報元の<strong
+                >天気予報 API（livedoor 天気互換）</strong
+              >様および<strong>気象庁</strong>のサーバーに負荷がかかりますので絶対におやめください。<strong>３秒以上間隔を空けて</strong>選択・再読み込みを行ってください。
+            </li>
+            <li>
+              このウェブサイト上で提供しているサービスを利用する方は<a
+                href="terms-of-use.html"
+                >利用規約</a
+              >に同意したものとみなします。
+            </li>
+            <li>
+              その他事項に関しては<a href="about.html">天気部について</a
+              >をご覧ください。
+            </li>
+          </ol>
+        </div>
+        <ul id="region">
+          <li>
+            <input type="checkbox" id="hokkaido" />
+            <label for="hokkaido" tabindex="0">
+              <img src="assets/images/icons/zzm_edama.png" alt="▽" />
+              北海道
+            </label>
+            <ul class="city">
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="011000" tabindex="0">稚内</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="012010" tabindex="0">旭川</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="013010" tabindex="0">網走</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="014020" tabindex="0">釧路</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="014030" tabindex="0">帯広</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="015010" tabindex="0">室蘭</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="016010" tabindex="0">札幌</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="017010" tabindex="0">函館</span>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <input type="checkbox" id="tohoku" />
+            <label for="tohoku" tabindex="0">
+              <img src="assets/images/icons/zzm_edama.png" alt="▽" />
+              東北
+            </label>
+            <ul class="city">
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="020010" tabindex="0">青森</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="030010" tabindex="0">盛岡</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="040010" tabindex="0">仙台</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="040020" tabindex="0">白石</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="050010" tabindex="0">秋田</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="060010" [ tabindex="0">山形</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="070010" tabindex="0">白河</span>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <input type="checkbox" id="kanto" />
+            <label for="kanto" tabindex="0">
+              <img src="assets/images/icons/zzm_edama.png" alt="▽" />
+              関東
+            </label>
+            <ul class="city">
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="080010" tabindex="0">水戸</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="090010" tabindex="0">宇都宮</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="100010" tabindex="0">前橋</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="110020" tabindex="0">熊谷</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="120020" tabindex="0">銚子</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="130010" tabindex="0">東京</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="130020" tabindex="0">大島</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="130030" tabindex="0">八丈島</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="130040" tabindex="0">父島</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="140010" tabindex="0">横浜</span>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <input type="checkbox" id="chubu" />
+            <label for="chubu" tabindex="0">
+              <img src="assets/images/icons/zzm_edama.png" alt="▽" />
+              中部
+            </label>
+            <ul class="city">
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="150010" tabindex="0">新潟</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="160010" tabindex="0">富山</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="170010" tabindex="0">金沢</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="180010" tabindex="0">福井</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="190010" tabindex="0">甲府</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="200010" tabindex="0">長野</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="210010" tabindex="0">岐阜</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="220010" tabindex="0">静岡</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="230010" tabindex="0">名古屋</span>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <input type="checkbox" id="kansai" />
+            <label for="kansai" tabindex="0">
+              <img src="assets/images/icons/zzm_edama.png" alt="▽" />
+              関西
+            </label>
+            <ul class="city">
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="240010" tabindex="0">津</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="250010" tabindex="0">大津</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="250020" tabindex="0">彦根</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="260010" tabindex="0">京都</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="270000" tabindex="0">大阪</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="280010" tabindex="0">神戸</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="290010" tabindex="0">奈良</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="300010" tabindex="0">和歌山</span>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <input type="checkbox" id="chugoku" />
+            <label for="chugoku" tabindex="0">
+              <img src="assets/images/icons/zzm_edama.png" alt="▽" />
+              中国
+            </label>
+            <ul class="city">
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="310010" tabindex="0">鳥取</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="320010" tabindex="0">松江</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="330010" tabindex="0">岡山</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="340010" tabindex="0">広島</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="350010" tabindex="0">下関</span>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <input type="checkbox" id="shikoku" />
+            <label for="shikoku" tabindex="0">
+              <img src="assets/images/icons/zzm_edama.png" alt="▽" />
+              四国
+            </label>
+            <ul class="city">
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="360010" tabindex="0">徳島</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="370000" tabindex="0">高松</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="380010" tabindex="0">松山</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="390010" tabindex="0">高知</span>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <input type="checkbox" id="kyushu" />
+            <label for="kyushu" tabindex="0">
+              <img src="assets/images/icons/zzm_edama.png" alt="▽" />
+              九州
+            </label>
+            <ul class="city">
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="400010" tabindex="0">福岡</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="410010" tabindex="0">佐賀</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="420010" tabindex="0">長崎</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="430010" tabindex="0">熊本</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="440010" tabindex="0">大分</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="450010" tabindex="0">宮崎</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="460010" tabindex="0">鹿児島</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="460040" tabindex="0">名瀬</span>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <input type="checkbox" id="okinawa" />
+            <label for="okinawa" tabindex="0">
+              <img src="assets/images/icons/zzm_edama.png" alt="▽" />
+              沖縄
+            </label>
+            <ul class="city">
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="471010" tabindex="0">那覇</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="471020" tabindex="0">名護</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="471030" tabindex="0">久米島</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="472000" tabindex="0">南大東</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="473000" tabindex="0">宮古島</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="474010" tabindex="0">石垣島</span>
+              </li>
+              <li>
+                <img
+                  src="assets/images/icons/zzm_zunkologo_black.png"
+                  alt=""
+                /><span class="city-name" id="474020" tabindex="0"
+                  >与那国島</span
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <small>Copyright &copy; 2023 ふるさと女学院天気部</small>
+    </aside>
+    <main>
+      <div id="bg-img"></div>
+      <div id="content">
+        <div id="title">
+          <img src="" alt="" />
+          <h1><span id="location"></span>&nbsp;(<time id="today"></time>)</h1>
+          <img src="" alt="" />
+        </div>
+        <header id="board">
+          <p id="bulletin"></p>
+        </header>
+        <div id="focus">
+          <div id="weather-container">
+            <div id="weather1-container">
+              <div>
+                <img src="" alt="" class="weatherImage" id="image1" />
+                <p id="weather1"></p>
+              </div>
+              <div>
+                <p id="temp-title">最高気温／最低気温</p>
+                <p id="temperature1">
+                  <span class="max"></span
+                  ><span>℃</span>&thinsp;<span>／</span>&thinsp;<span
+                    class="min"
+                  ></span
+                  ><span>℃</span>
+                </p>
+                <p id="chanceOfRain">降水確率</p>
+                <p class="time">
+                  <time datetime="0:00">0:00</time>~<time datetime="6:00"
+                    >6:00</time
+                  >&ensp;<span id="rainto6"></span>
+                </p>
+                <p class="time">
+                  <time datetime="6:00">6:00</time>~<time datetime="12:00"
+                    >12:00</time
+                  >&ensp;<span id="rainto12"></span>
+                </p>
+                <p class="time">
+                  <time datetime="12:00">12:00</time>~<time datetime="18:00"
+                    >18:00</time
+                  >&ensp;<span id="rainto18"></span>
+                </p>
+                <p class="time">
+                  <time datetime="18:00">18:00</time>~<time datetime="24:00"
+                    >24:00</time
+                  >&ensp;<span id="rainto24"></span>
+                </p>
+              </div>
+              <div>
+                <p id="wind"><span>風：</span><span class="content"></span></p>
+                <p id="wave"><span>波：</span><span class="content"></span></p>
+              </div>
+            </div>
+            <div id="weather-2-3-container">
+              <div>
+                <h3 id="tomorrow">明日</h3>
+                <img src="" alt="" class="weatherImage" id="image2" />
+                <div>
+                  <p id="weather2"></p>
+                  <p id="temperature2">
+                    <span class="max"></span
+                    ><span>℃</span>&thinsp;<span>／</span>&thinsp;<span
+                      class="min"
+                    ></span
+                    ><span>℃</span>
+                  </p>
+                </div>
+              </div>
+              <div>
+                <h3>明後日</h3>
+                <img src="" alt="" class="weatherImage" id="image3" />
+                <div>
+                  <p id="weather3"></p>
+                  <p id="temperature3">
+                    <span class="max"></span
+                    ><span>℃</span>&thinsp;<span>／</span>&thinsp;<span
+                      class="min"
+                    ></span
+                    ><span>℃</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="character-container">
+            <img src="" id="character-image" alt="" />
+            <p id="speech"></p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="index.js" type="module"></script>
+</html>

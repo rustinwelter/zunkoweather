@@ -1,0 +1,166 @@
+@font-face {
+  font-family: "Zen Old Mincho";
+  font-weight: 400;
+  src: url("assets/fonts/ZenOldMincho-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Zen Old Mincho";
+  font-weight: 700;
+  src: url("assets/fonts/ZenOldMincho-Black.woff2") format("woff2");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Zen Old Mincho", serif;
+}
+
+body {
+  background-color: rgb(150, 255, 150);
+}
+
+h2 {
+  text-align: center;
+  margin: 0px 0px 10px 0px;
+  font-size: 32px;
+}
+
+form {
+  margin: 6vw 4vw 10vw 4vw;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+form ul li {
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"] {
+  font-size: 22px;
+  border-radius: 8px;
+  padding: 2px 10px;
+  width: calc(100% - 20px);
+  border: 2px solid #000000;
+}
+
+input[type="checkbox"] {
+  margin-left: 10px;
+}
+
+.checkbox {
+  font-size: 16px;
+}
+
+input:focus,
+textarea:focus {
+  border: 2px solid rgb(20, 255, 125);
+  outline: 3px solid rgba(20, 255, 125, 0.5);
+}
+
+textarea {
+  width: calc(100% - 20px);
+  height: 200px;
+  border: 2px solid #000000;
+  resize: none;
+  border-radius: 15px;
+  font-size: 22px;
+  padding: 10px;
+}
+
+button {
+  width: 40%;
+  margin: 15px 30% 0 30%;
+  font-size: 21px;
+  border: 2px solid #000000;
+  border-radius: 100px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(20, 255, 125);
+}
+
+section {
+  margin-bottom: 13vw;
+}
+
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 3px;
+  border-radius: 15px;
+  background-color: rgb(75, 230, 75);
+}
+
+.member > div {
+  margin: 10px;
+}
+
+section img {
+  height: auto;
+  width: 80vw;
+  max-width: 150px;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+h3 {
+  font-size: minmax(16px, 24px);
+}
+
+ul {
+  list-style: none;
+}
+
+@media (min-width: 370px) {
+  .member {
+    flex-direction: row;
+    align-items: flex-start;
+    border-radius: 100px;
+    text-align: start;
+  }
+}
+
+@media (min-width: 800px) {
+  section > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+  section > div {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+footer {
+  background-color: #ffffff;
+  padding: 30px 0;
+}
+
+footer div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+footer img {
+  width: clamp(100px, 14vw, 250px);
+}
+
+footer a {
+  font-size: clamp(16px, 1.6vw, 28px);
+}
+
+small {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}

@@ -1,0 +1,3 @@
+/*
+  Referrer-Policy: no-referrer
+  X-Robots-Tag: noarchive, nofollow, nosnippet
